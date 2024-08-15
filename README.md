@@ -1,5 +1,7 @@
 # Cognis Trading Platform
 
+![DALL·E 2024-04-03 01 44 35 - A sophisticated and clean design featuring a chessboard with pieces made of skyscrapers and circuits, suggesting strategic market maneuvers and advanc](https://github.com/user-attachments/assets/d88a2cfa-2bae-4066-bb38-81e4baa8834a)
+
 ## Introduction
 
 Cognis is a comprehensive trading platform designed to provide users with a seamless experience in managing their portfolios, trading assets, and integrating banking services. This platform leverages cutting-edge libraries such as Expo, Tamagui, Clerk for authentication, and various other tools to create an efficient and user-friendly application.
