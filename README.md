@@ -1,6 +1,7 @@
 # Cognis Trading Platform
 
-![DALL·E 2024-04-03 01 44 35 - A sophisticated and clean design featuring a chessboard with pieces made of skyscrapers and circuits, suggesting strategic market maneuvers and advanc](https://github.com/user-attachments/assets/d88a2cfa-2bae-4066-bb38-81e4baa8834a)
+![DALL·E 2024-04-03 01 42 33 - A modern interface showing a digital token ($CGNS) seamlessly integrating with a futuristic AI brain network, indicating the advanced connection betwe](https://github.com/user-attachments/assets/878acfdb-ad76-4ad6-b808-b0089513cddd)
+
 
 ## Introduction
 
