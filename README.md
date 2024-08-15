@@ -139,8 +139,8 @@ React Navigation is used for routing and navigation in React Native applications
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/your-repo/cognis-trading-platform.git
-   cd cognis-trading-platform
+   git clone https://github.com/your-repo/cognis-holdings.git
+   cd cognis-holdings
    ```
 
 2. **Install dependencies**:
@@ -150,11 +150,12 @@ React Navigation is used for routing and navigation in React Native applications
 
 3. **Set up environment variables**:
    Create a `.env` file in the root directory and add your Clerk API key:
+   [Clerk Add Application](https://dashboard.clerk.com/apps/new)
    ```env
    EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your-clerk-api-key
    ```
 
-4. **Run the project**:
+5. **Run the project**:
    ```sh
    npm start
    ```
