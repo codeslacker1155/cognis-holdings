@@ -81,8 +81,7 @@ Expo is a framework and a platform for universal React applications. It enables 
 - **Documentation**: [Expo Documentation](https://docs.expo.dev/)
 - **Installation**:
   ```sh
-  npx create-expo-app my-app
-  cd my-app
+  gh repo clone codeslacker1155/cognis-holdings
   npm install
   ```
 
