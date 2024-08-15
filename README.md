@@ -1,6 +1,3 @@
-Here is a comprehensive README.md file for your project:
-
-```markdown
 # Cognis Trading Platform
 
 ## Introduction
@@ -176,9 +173,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-By following the above steps, you will have a fully functional trading platform application with a comprehensive set of features. For detailed implementation of each screen and component, refer to the respective library documentation.
-
-```
