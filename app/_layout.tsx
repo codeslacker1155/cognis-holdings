@@ -8,6 +8,7 @@ import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
 import { Slot } from 'expo-router'
 import tamaguiConfig from '../tamagui.config'
 import { TamaguiProvider } from '@tamagui/core'
+import * as SecureStore from 'expo-secure-store';
 
 const tokenCache = {
   async getToken(key: string) {
@@ -79,21 +80,39 @@ function RootLayoutNav() {
           <TamaguiProvider config={tamaguiConfig}>
             <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
               <Stack>
-                <Stack.Screen
-                  name="(tabs)"
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <Stack.Screen
-                  name="modal"
-                  options={{
-                    title: 'Tamagui + Expo',
-                    presentation: 'modal',
-                    animation: 'slide_from_right',
-                    gestureEnabled: true,
-                    gestureDirection: 'horizontal',
-                  }}
+              <Stack.Screen
+                name="splash"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="(auth)/sign-in"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="(auth)/sign-up"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="(home)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="modal"
+                options={{
+                  title: 'Tamagui + Expo',
+                  presentation: 'modal',
+                  animation: 'slide_from_right',
+                  gestureEnabled: true,
+                  gestureDirection: 'horizontal',
+                }}
                 />
               </Stack>
             </ThemeProvider>
