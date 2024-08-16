@@ -1,39 +1,33 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import MarketOverview from '../../components/MarketOverview';
-import PortfolioOverview from '../../components/PortfolioOverview';
-import Watchlist from '../../components/Watchlist';
-import TradingSection from '../../components/TradingSection';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { YStack } from 'tamagui';
+import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
+import MarketOverview from 'components/MarketOverview';
+import PortfolioOverview from 'components/PortfolioOverview';
+import Watchlist from 'components/Watchlist';
+import TradingSection from 'components/TradingSection';
 
+// Get screen dimensions
 const { width, height } = Dimensions.get('window');
 
-export default function Dashboard({ navigation }) {
+export default function Dashboard() {
     return (
         <View style={styles.container}>
             <Navbar />
             <View style={styles.gridContainer}>
-                <TouchableOpacity
-                    style={styles.gridItem}
-                    onPress={() => navigation.navigate('MarketOverview')}>
+                <View style={styles.gridItem}>
                     <MarketOverview />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.gridItem}
-                    onPress={() => navigation.navigate('PortfolioOverview')}>
+                </View>
+                <View style={styles.gridItem}>
                     <PortfolioOverview />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.gridItem}
-                    onPress={() => navigation.navigate('Watchlist')}>
+                </View>
+                <View style={styles.gridItem}>
                     <Watchlist />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.gridItem}
-                    onPress={() => navigation.navigate('TradingSection')}>
+                </View>
+                <View style={styles.gridItem}>
                     <TradingSection />
-                </TouchableOpacity>
+                </View>
             </View>
             <Footer />
         </View>
@@ -43,21 +37,20 @@ export default function Dashboard({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1a1a1a', // Dark background
+        backgroundColor: '#121212',
     },
     gridContainer: {
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        marginVertical: 20,
+        justifyContent: 'space-around',
+        padding: 10,
     },
     gridItem: {
-        width: width * 0.45, // Make sure the items fit nicely on the screen
-        height: height * 0.4,
-        marginVertical: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.1)', // Transparent gradient
+        width: width * 0.45,
+        height: width * 0.45,
+        margin: 10,
+        backgroundColor: '#333',
         borderRadius: 10,
         overflow: 'hidden',
     },
