@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { YStack, Text as TamaguiText } from 'tamagui';
+import { View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import MarketOverview from '../../components/MarketOverview';
@@ -8,46 +7,33 @@ import PortfolioOverview from '../../components/PortfolioOverview';
 import Watchlist from '../../components/Watchlist';
 import TradingSection from '../../components/TradingSection';
 
-// Get screen dimensions
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
-export default function Dashboard() {
+export default function Dashboard({ navigation }) {
     return (
         <View style={styles.container}>
             <Navbar />
             <View style={styles.gridContainer}>
-                <View style={styles.gridItem}>
-                    <View style={styles.gridContent}>
-                        <MarketOverview />
-                        <View style={styles.overlay}>
-                            <TamaguiText style={styles.gridText}>Market Overview</TamaguiText>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.gridItem}>
-                    <View style={styles.gridContent}>
-                        <PortfolioOverview />
-                        <View style={styles.overlay}>
-                            <TamaguiText style={styles.gridText}>Portfolio Overview</TamaguiText>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.gridItem}>
-                    <View style={styles.gridContent}>
-                        <Watchlist />
-                        <View style={styles.overlay}>
-                            <TamaguiText style={styles.gridText}>Watchlist</TamaguiText>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.gridItem}>
-                    <View style={styles.gridContent}>
-                        <TradingSection />
-                        <View style={styles.overlay}>
-                            <TamaguiText style={styles.gridText}>Trading</TamaguiText>
-                        </View>
-                    </View>
-                </View>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigation.navigate('MarketOverview')}>
+                    <MarketOverview />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigation.navigate('PortfolioOverview')}>
+                    <PortfolioOverview />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigation.navigate('Watchlist')}>
+                    <Watchlist />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigation.navigate('TradingSection')}>
+                    <TradingSection />
+                </TouchableOpacity>
             </View>
             <Footer />
         </View>
@@ -57,48 +43,22 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121212',
+        backgroundColor: '#1a1a1a', // Dark background
     },
     gridContainer: {
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        padding: 10,
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        marginVertical: 20,
     },
     gridItem: {
-        width: width / 2 - 15,
-        height: width / 2 - 15,
-        marginBottom: 10,
-        backgroundColor: 'rgba(30, 30, 30, 0.7)',  // Transparent gradient effect
+        width: width * 0.45, // Make sure the items fit nicely on the screen
+        height: height * 0.4,
+        marginVertical: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.1)', // Transparent gradient
         borderRadius: 10,
         overflow: 'hidden',
-        borderColor: '#333',
-        borderWidth: 1,
-    },
-    gridContent: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    overlay: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Darker overlay for better text contrast
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    gridText: {
-        color: 'white',
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    footerContainer: {
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#000',
-    },
-    footerText: {
-        color: 'white',
     },
 });
