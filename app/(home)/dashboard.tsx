@@ -1,34 +1,63 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { YStack } from 'tamagui';
+import { View, StyleSheet, Dimensions, TouchableOpacity, ScrollView, PanResponder, Animated } from 'react-native';
+import { useRouter } from 'expo-router';
 import Navbar from 'components/Navbar';
 import Footer from 'components/Footer';
 import MarketOverview from 'components/MarketOverview';
 import PortfolioOverview from 'components/PortfolioOverview';
 import Watchlist from 'components/Watchlist';
-import TradingSection from 'components/TradingSection';
 
 // Get screen dimensions
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 export default function Dashboard() {
+    const router = useRouter();
+
+    const navigateToPage = (path: string) => {
+        router.push(path);
+    };
+
+    const scrollY = React.useRef(new Animated.Value(0)).current;
+
+    const handlePinch = Animated.event([{ nativeEvent: { scale: scrollY } }], {
+        useNativeDriver: false,
+    });
+
+    const panResponder = PanResponder.create({
+        onMoveShouldSetPanResponder: () => true,
+        onPanResponderMove: (e, gestureState) => {
+            scrollY.setValue(gestureState.dy);
+        },
+    });
+
     return (
-        <View style={styles.container}>
+        <View style={styles.container} {...panResponder.panHandlers}>
             <Navbar />
-            <View style={styles.gridContainer}>
-                <View style={styles.gridItem}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigateToPage('market')}
+                >
                     <MarketOverview />
-                </View>
-                <View style={styles.gridItem}>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigateToPage('portfolio')}
+                >
                     <PortfolioOverview />
-                </View>
-                <View style={styles.gridItem}>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigateToPage('watchlist')}
+                >
                     <Watchlist />
-                </View>
-                <View style={styles.gridItem}>
-                    <TradingSection />
-                </View>
-            </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.gridItem}
+                    onPress={() => navigateToPage('trading')}
+                >
+                </TouchableOpacity>
+            </ScrollView>
             <Footer />
         </View>
     );
@@ -37,19 +66,22 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: '100%',
         backgroundColor: '#121212',
     },
+    scrollContainer: {
+        flexGrow: 1,
+        paddingBottom: 20,  // Extra space at the bottom for better scrolling experience
+    },
     gridContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        padding: 10,
+        flexDirection: 'column',  // Stack items vertically
+        justifyContent: 'space-between',  // Ensures space between items
+        paddingHorizontal: 1,
     },
     gridItem: {
-        width: width * 0.45,
-        height: width * 0.45,
-        margin: 10,
+        width: '100%',  // Full width
+        height: width * 0.6,  // Adjusted height for full-width display
+        marginVertical: 10,
         backgroundColor: '#333',
         borderRadius: 10,
         overflow: 'hidden',

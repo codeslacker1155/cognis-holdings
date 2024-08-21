@@ -7,9 +7,9 @@ import { Text } from 'tamagui';
 const Navbar = () => {
     return (
         <View style={styles.navbar}>
-            <Link href="/" style={styles.link}>Dashboard</Link>
-            <Link href="/watchlist" style={styles.link}>Watchlist</Link>
-            <Link href="/trading" style={styles.link}>Trading</Link>
+            <Link href="/" style={styles.link}>Home</Link>
+            <Link href="watchlist" style={styles.link}>Watchlist</Link>
+            <Link href="components/TradingSection" style={styles.link}>Trading</Link>
             <Link href="/portfolio" style={styles.link}>Portfolio</Link>
             <Link href="/settings" style={styles.link}>Settings</Link>
         </View>
